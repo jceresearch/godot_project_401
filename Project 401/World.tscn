@@ -1,6 +1,62 @@
-[gd_scene load_steps=2 format=3 uid="uid://djfodb5bnbttu"]
+[gd_scene load_steps=10 format=3 uid="uid://djfodb5bnbttu"]
 
 [ext_resource type="Script" uid="uid://qabjyhr8ev61" path="res://world.gd" id="1_c6gwx"]
+[ext_resource type="Script" uid="uid://cl7fs6ibuxe5f" path="res://node_2d.gd" id="2_js7pq"]
+[ext_resource type="Script" uid="uid://ffy2po83ukj4" path="res://enemy.gd" id="3_eu7l1"]
+[ext_resource type="Texture2D" uid="uid://x4fnocjjad2b" path="res://icon.svg" id="4_p1v5b"]
+[ext_resource type="Script" uid="uid://dp2t78d2cg7je" path="res://focus_2.gd" id="5_eu7l1"]
+[ext_resource type="Script" uid="uid://ddooeq2hrr1pq" path="res://camera_2d.gd" id="6_p1v5b"]
+[ext_resource type="Script" uid="uid://bbvncubtp8lp6" path="res://swarm_manager.gd" id="7_bah7m"]
+[ext_resource type="Script" uid="uid://ctrx6affidria" path="res://boid.gd" id="8_fv4w7"]
 
-[node name="World" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wygdx"]
+size = Vector2(16, 18)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(1, 1)
+
+[node name="Force connected" type="Node2D" parent="."]
 script = ExtResource("1_c6gwx")
+
+[node name="Mob" type="Node2D" parent="."]
+position = Vector2(-2, 2)
+script = ExtResource("2_js7pq")
+
+[node name="Enemy" type="CharacterBody2D" parent="Mob"]
+visible = false
+position = Vector2(31, 13)
+script = ExtResource("3_eu7l1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mob/Enemy"]
+position = Vector2(0, 1)
+scale = Vector2(0.140625, 0.154297)
+texture = ExtResource("4_p1v5b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob/Enemy"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_wygdx")
+
+[node name="Focus2" type="Node2D" parent="Mob"]
+position = Vector2(646, 407)
+script = ExtResource("5_eu7l1")
+
+[node name="Focus3" type="Node2D" parent="Mob"]
+position = Vector2(206, 97)
+script = ExtResource("5_eu7l1")
+
+[node name="Camera2D" type="Camera2D" parent="Mob"]
+position = Vector2(-1, -1)
+script = ExtResource("6_p1v5b")
+target_a = NodePath("../Focus2")
+target_b = NodePath("../Focus3")
+
+[node name="SwarmManager" type="Node2D" parent="Mob"]
+script = ExtResource("7_bah7m")
+
+[node name="Boid" type="Node2D" parent="Mob"]
+script = ExtResource("8_fv4w7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mob/Boid"]
+position = Vector2(0.999998, -2.75)
+scale = Vector2(0.203125, 0.183594)
+texture = ExtResource("4_p1v5b")

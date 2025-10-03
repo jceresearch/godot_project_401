@@ -11,7 +11,7 @@ const MAX_FORCE: float = 2000.0				# clamp to avoid explosions
 const NODE_RADIUS: float = 10.0
 const EDGE_WIDTH: float = 2.0
 const LABEL_OFFSET := Vector2(0, -18)
-const STEPS_PER_FRAME: int = 1				# >1 for extra stability
+const STEPS_PER_FRAME: int =2				# >1 for extra stability
 
 # ---------- Graph storage ----------
 var nodes: Array[Vector2] = []				# positions
@@ -26,9 +26,13 @@ var _drag_offset: Vector2 = Vector2.ZERO
 
 # ---------- Demo setup ----------
 func _ready() -> void:
+	pass
+	#generate_network()
+	
+func generate_network() -> void:
 	randomize()
 	# Build a small sample graph
-	var n := 40
+	var n := 10
 	for i in n:
 		var p := Vector2(
 			randf() * 800.0 - 400.0,
