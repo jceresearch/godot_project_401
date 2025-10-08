@@ -1,9 +1,9 @@
 extends Node2D
 # EnemyNoPhysics.gd
 
-@export var max_speed: float = 140.0
-@export var max_force: float = 600.0
-@export var arrive_radius: float = 200
+@export var max_speed: float = 300.0
+@export var max_force: float = 800.0
+@export var arrive_radius: float = 100
 @export var stop_radius: float = 50.0
 @export var separation_weight: float = 1.5  #originally 1.5
 @export var drag: float = 4.0
