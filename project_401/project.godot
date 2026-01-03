@@ -36,19 +36,29 @@ renderer/rendering_method="mobile"
 
 project/editorState=[{
 "column": 0,
-"line": 34,
+"line": 28,
 "path": "res://node_2d.gd",
 "type": "file"
 }, {
 "column": 0,
-"line": 6,
+"current": true,
+"line": 18,
 "path": "res://swarm_manager.gd",
 "type": "file"
 }, {
 "column": 0,
-"current": true,
 "line": 5,
 "path": "res://boid.gd",
+"type": "file"
+}, {
+"column": 0,
+"line": 0,
+"path": "res://world.gd",
+"type": "file"
+}, {
+"column": 0,
+"line": 0,
+"path": "res://enemy.gd",
 "type": "file"
 }]
 project/breakpoints={
